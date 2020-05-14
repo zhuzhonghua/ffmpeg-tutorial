@@ -1,0 +1,3 @@
+testffmpeg:
+	g++ -o testffmpeg testffmpeg.cpp -lavformat -lavcodec -lavutil
+

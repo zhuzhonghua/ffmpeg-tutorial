@@ -1,0 +1,3 @@
+ffmpeg_tutorial1:
+	g++ -o ffmpeg_tutorial1 ffmpeg_tutorial1.cpp  -lavformat -lavcodec -lswscale -lavutil -lz -lm
+
