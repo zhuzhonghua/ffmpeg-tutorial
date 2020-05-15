@@ -236,6 +236,8 @@ void audio_callback(void *userdata, Uint8 *stream, int len) {
   VideoState *is = (VideoState *)userdata;
   int len1, audio_size;
 
+	SDL_memset(stream, 0, len);
+	
   while(len > 0) {
     if(is->audio_buf_index >= is->audio_buf_size) {
       /* We have already sent all our data; get more */
