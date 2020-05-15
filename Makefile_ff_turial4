@@ -1,0 +1,6 @@
+
+TARGET = ffmpeg_tutorial4
+
+$(TARGET):$(TARGET).cpp
+	g++ -o $(TARGET) $(TARGET).cpp  -g -O0 -lavformat -lavcodec -lswscale -lswresample -lavutil -lz -lm `sdl2-config --cflags --libs`
+
