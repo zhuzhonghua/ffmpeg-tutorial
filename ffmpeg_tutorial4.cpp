@@ -294,7 +294,7 @@ void video_display(VideoState *is) {
       aspect_ratio = 0;
     } else {
       aspect_ratio = av_q2d(is->video_ctx->sample_aspect_ratio) *
-			is->video_ctx->width / is->video_ctx->height;
+														is->video_ctx->width / is->video_ctx->height;
     }
     if(aspect_ratio <= 0.0) {
       aspect_ratio = (float)is->video_ctx->width / (float)is->video_ctx->height;
@@ -305,6 +305,7 @@ void video_display(VideoState *is) {
       w = winW;
       h = ((int)rint(w / aspect_ratio)) & -3;
     }
+		
     x = (winW - w) / 2;
     y = (winH - h) / 2;
     
@@ -318,7 +319,7 @@ void video_display(VideoState *is) {
 		
     SDL_UpdateYUVTexture(
 										vp->texture,
-										&rect,
+										NULL,
 										is->yPlane,
 										is->video_ctx->width,
 										is->uPlane,
@@ -329,7 +330,7 @@ void video_display(VideoState *is) {
     SDL_UnlockMutex(screen_mutex);
 		
 		SDL_RenderClear(renderer);
-		SDL_RenderCopy(renderer, vp->texture, NULL, NULL);
+		SDL_RenderCopy(renderer, vp->texture, NULL, &rect);
 		SDL_RenderPresent(renderer);
   }
 }
